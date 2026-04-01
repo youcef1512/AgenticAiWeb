@@ -1,12 +1,27 @@
+import Image from "next/image";
 import { siteContent } from "@/data/site";
 
 const activeContactLinks = siteContent.contactLinks.filter((link) => Boolean(link.href));
+const heroPhoto = siteContent.photos[0];
+const galleryPhotos = siteContent.photos.slice(1);
 
 export default function Home() {
   return (
     <main className="page-shell">
       <section className="hero">
         <div className="hero__backdrop" />
+        <div className="hero__media">
+          <div className="hero__photo-frame">
+            <Image
+              src={heroPhoto.src}
+              alt={heroPhoto.alt}
+              fill
+              className="hero__photo"
+              priority={heroPhoto.priority}
+              sizes="(max-width: 900px) 100vw, 44vw"
+            />
+          </div>
+        </div>
         <div className="hero__content">
           <p className="eyebrow">Personal website</p>
           <h1>{siteContent.name}</h1>
@@ -20,6 +35,32 @@ export default function Home() {
               Learn more
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="section" id="gallery">
+        <div className="section__header">
+          <p className="section__label">Gallery</p>
+          <h2>Personal photos built into the page structure.</h2>
+        </div>
+        <div className="photo-grid">
+          {galleryPhotos.map((photo) => (
+            <article className="photo-card" key={photo.src}>
+              <div className="photo-card__image-wrap">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="photo-card__image"
+                  sizes="(max-width: 900px) 100vw, 32vw"
+                />
+              </div>
+              <div className="photo-card__copy">
+                <p className="photo-card__title">{photo.title}</p>
+                <p className="photo-card__caption">{photo.caption}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 

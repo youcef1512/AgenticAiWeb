@@ -11,6 +11,14 @@ export type ContactLink = {
   external?: boolean;
 };
 
+export type PhotoItem = {
+  src: string;
+  alt: string;
+  title: string;
+  caption: string;
+  priority?: boolean;
+};
+
 export type SiteContent = {
   name: string;
   tagline: string;
@@ -21,6 +29,7 @@ export type SiteContent = {
     href: string;
   };
   focusItems: FocusItem[];
+  photos: PhotoItem[];
   contactLinks: ContactLink[];
 };
 
@@ -53,6 +62,27 @@ export const siteContent: SiteContent = {
       title: "Collaboration and outcomes",
       description:
         "Describe the type of teams, projects, or measurable results that best represent the way Youcef works."
+    }
+  ],
+  photos: [
+    {
+      src: "/images/field-sunset.jpeg",
+      alt: "A grassy field at sunset under a wide open sky.",
+      title: "Open space",
+      caption: "A quiet landscape frame that works well as the visual anchor near the top of the page.",
+      priority: true
+    },
+    {
+      src: "/images/blossom-closeup.jpeg",
+      alt: "A close-up photo of a white blossom against a blue sky.",
+      title: "Detail",
+      caption: "A tighter nature shot that adds contrast and texture to the layout."
+    },
+    {
+      src: "/images/city-view.jpeg",
+      alt: "A downtown city view framed by buildings and steps.",
+      title: "Perspective",
+      caption: "An urban frame that balances the softer images and gives the page more range."
     }
   ],
   contactLinks: [
